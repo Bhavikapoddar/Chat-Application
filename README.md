@@ -1,37 +1,47 @@
-hiiii
-.... 
-
-... 
-body {
-    font-family: Arial, sans-serif;
+hh
+/* Body styles for the login and register pages */
+body.login-body {
     background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
+/* Page wrapper for centering the content */
+.page-wrapper {
+    min-height: 100vh;
+    display: table;
+    width: 100%;
+}
+
+/* Form container styles */
 .form-container {
     background-color: #fff;
-    padding: 30px 40px;
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     box-sizing: border-box;
-    text-align: center;
+
+    /* Centering the form horizontally */
+    margin: 0 auto;
+    
+    /* Centering the form vertically using table-cell */
+    display: table-cell;
+    vertical-align: middle;
 }
 
-h2 {
+/* Form header and title */
+.form-container h2 {
+    text-align: center;
     color: #333;
     margin-bottom: 25px;
     font-weight: 600;
 }
 
+/* Form group for each input */
 .form-group {
     margin-bottom: 20px;
-    text-align: left;
 }
 
 .form-group label {
@@ -41,6 +51,7 @@ h2 {
     font-weight: bold;
 }
 
+/* Styling for all text inputs and password fields */
 .form-control {
     width: 100%;
     padding: 12px;
@@ -48,14 +59,16 @@ h2 {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
 }
 
 .form-control:focus {
     border-color: #007bff;
     outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
+/* Styling for the submit button */
 .btn-primary {
     width: 100%;
     padding: 12px;
@@ -65,15 +78,17 @@ h2 {
     border-radius: 4px;
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
 
+/* Link and text styling */
 .text-center {
     margin-top: 15px;
+    text-align: center;
 }
 
 .text-center a {
@@ -85,107 +100,23 @@ h2 {
     text-decoration: underline;
 }
 
+/* Message styling for success and error messages */
 .text-danger {
     color: #dc3545;
     margin-top: 15px;
+    text-align: center;
 }
 
 .text-success {
     color: #28a745;
     margin-top: 15px;
+    text-align: center;
 }
-..... 
-.... 
-. 
-.. 
+.....
+. .. 
+hhh
 
-.. 
-@{
-    ViewBag.Title = "Log in";
-    Layout = null;
-}
 
-<head>
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/login.css" rel="stylesheet" />
-</head>
 
-<body>
-    <div class="form-container">
-        <h2>Login</h2>
-        @using (Html.BeginForm("Login", "User", FormMethod.Post))
-        {
-            <div class="form-group">
-                <label for="Username">Username</label>
-                <input type="text" name="Username" id="Username" class="form-control" required />
-            </div>
-            <div class="form-group">
-                <label for="Password">Password</label>
-                <input type="password" name="Password" id="Password" class="form-control" required />
-            </div>
-            <input type="submit" value="Login" class="btn-primary" />
-        }
-
-        @if (ViewBag.Error != null)
-        {
-            <p class="text-danger">@ViewBag.Error</p>
-        }
-
-        <div class="text-center">
-            <p>Don't have an account? @Html.ActionLink("Register here", "Register", "User")</p>
-        </div>
-    </div>
-</body>
-..... 
-
-.... 
-.... 
-
-.. @model Airline_Managementnew.Models.User
-
-@{
-    ViewBag.Title = "Register";
-    Layout = null;
-}
-
-<head>
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/login.css" rel="stylesheet" />
-</head>
-
-<body>
-    <div class="form-container">
-        <h2>Register</h2>
-        @using (Html.BeginForm("Register", "User", FormMethod.Post))
-        {
-            <div class="form-group">
-                @Html.LabelFor(m => m.Username)
-                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", required = "required" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password)
-                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", required = "required", type = "password" })
-            </div>
-            
-            <input type="submit" value="Register" class="btn-primary" />
-        }
-
-        @if (ViewBag.Message != null)
-        {
-            <p class="text-success">@ViewBag.Message</p>
-        }
-
-        <div class="text-center">
-            <p>Already have an account? @Html.ActionLink("Login here", "Login", "User")</p>
-        </div>
-    </div>
-</body>
-..... 
 
 
