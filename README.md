@@ -1,153 +1,160 @@
-.... 
-...... 
-........ 
-<style>
-    /* Global Styles for Body */
-    body {
-        background-color: #f0f4f7; /* Soft blue-gray background */
-        font-family: Arial, sans-serif;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-    }
+........ ... ./* Global Styles for Body */
+body {
+    background: linear-gradient(to right, #e0ecf8, #f8fbff); /* Soft blue gradient */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a202c;
+    margin: 0;
+    padding: 20px;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
-    /* Main Container */
-    .passenger-container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+/* Main Container */
+.passenger-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
 
-    /* Card Styling */
-    .passenger-card {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        padding: 30px;
-        margin-bottom: 25px;
-    }
-    
-    /* Heading Styles */
-    h2.passenger-title {
-        font-weight: 700;
-        color: #2d3748; /* Darker gray for title */
-        text-align: center;
-        margin-bottom: 4rem; /* As per your code */
-        position: relative;
-    }
+/* Card Styling */
+.passenger-card {
+    background-color: #ffffffd9;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+}
 
-    h2.passenger-title::before {
-        content: "✈️ "; /* Airplane emoji for main title */
-    }
+.passenger-card:hover {
+    transform: scale(1.01);
+}
 
-    .passenger-card h5 {
-        font-weight: 600;
-        color: #4a5568; /* Slightly lighter gray for card headings */
-        margin-bottom: 20px;
-        position: relative;
-    }
+/* Heading Styles */
+h2.passenger-title {
+    font-weight: 800;
+    color: #2a4365;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    position: relative;
+}
 
-    .passenger-card h5::before {
-        content: "📝 "; /* Notebook emoji for card headings */
-    }
+h2.passenger-title::before {
+    content: "✈️ ";
+    font-size: 1.5rem;
+}
 
-    /* Layout for Columns (No Flexbox) */
-    .row::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+.passenger-card h5 {
+    font-weight: 700;
+    color: #4a5568;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+}
 
-    .col-md-3, .col-md-4, .col-md-6 {
-        float: left;
-        padding: 0 15px;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-    }
+.passenger-card h5::before {
+    content: "📝 ";
+}
 
-    .col-md-3 { width: 25%; }
-    .col-md-4 { width: 33.333%; }
-    .col-md-6 { width: 50%; }
+/* Column Layout */
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .col-md-3, .col-md-4, .col-md-6 {
-            width: 100%;
-            float: none;
-            padding: 0;
-        }
-    }
+.col-md-3, .col-md-4, .col-md-6 {
+    float: left;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
 
-    /* Labels and Input Styles */
-    .passenger-label {
-        display: block;
-        font-weight: 600;
-        color: #718096; /* Soft gray for labels */
-        margin-bottom: 8px;
-    }
+.col-md-3 { width: 25%; }
+.col-md-4 { width: 33.3333%; }
+.col-md-6 { width: 50%; }
 
-    .passenger-input, .passenger-select,
-    .form-control.passenger-input, .form-control.passenger-select {
-        width: 100%;
-        padding: 12px 15px;
-        border: 1px solid #e2e8f0; /* Very light gray border */
-        border-radius: 8px;
-        box-sizing: border-box;
-        background-color: #f7fafc; /* Off-white for fields */
-        color: #2d3748;
-        transition: all 0.2s ease-in-out;
-    }
-    
-    .passenger-input[readonly], .passenger-select[readonly] {
-        background-color: #f2f6fa;
-        cursor: not-allowed;
-    }
-    
-    .passenger-input:focus, .passenger-select:focus {
-        border-color: #63b3ed; /* A nice blue focus color */
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
-        outline: none;
-        background-color: #ffffff;
-    }
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .col-md-3, .col-md-4, .col-md-6 {
+        width: 100%;
+        float: none;
+        padding: 0;
+    }
+}
 
-    /* Button Styles */
-    .passenger-btn-primary {
-        background-color: #4299e1; /* Friendly blue */
-        color: #ffffff;
-        border: none;
-        padding: 14px 28px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 20px;
-    }
-    
-    .passenger-btn-primary:hover {
-        background-color: #3182ce;
-    }
+/* Labels and Inputs */
+.passenger-label {
+    display: block;
+    font-weight: 600;
+    color: #718096;
+    margin-bottom: 8px;
+}
 
-    .passenger-btn-secondary {
-        background-color: #a0aec0; /* A soft gray for secondary button */
-        color: #ffffff;
-        border: none;
-        padding: 14px 28px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 20px;
-        margin-right: 10px;
-    }
+.passenger-input, .passenger-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #cbd5e0;
+    border-radius: 10px;
+    background-color: #f7fafc;
+    color: #2d3748;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
-    .passenger-btn-secondary:hover {
-        background-color: #718096;
-    }
+.passenger-input:focus, .passenger-select:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.3);
+    background-color: #fff;
+    outline: none;
+}
 
-    /* Specific element styles */
-    .passenger-mb-5 {
-        margin-bottom: 5rem !important; /* Retaining your specific styles */
-    }
-</style>
+.passenger-input[readonly], .passenger-select[readonly] {
+    background-color: #edf2f7;
+    cursor: not-allowed;
+}
+
+/* Buttons */
+.passenger-btn-primary {
+    background: linear-gradient(to right, #4299e1, #3182ce);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.passenger-btn-primary:hover {
+    background: linear-gradient(to right, #2b6cb0, #2c5282);
+}
+
+.passenger-btn-secondary {
+    background: #a0aec0;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.passenger-btn-secondary:hover {
+    background-color: #718096;
+}
+
+/* Spacing */
+.passenger-mb-5 {
+    margin-bottom: 5rem !important;
+}
