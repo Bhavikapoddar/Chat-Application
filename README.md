@@ -1,110 +1,104 @@
-hiiiii
+hiiii
 .... 
+
 ... 
-/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Form Container - Replaced flexbox with traditional centering */
 .form-container {
     background-color: #fff;
-    padding: 30px;
+    padding: 30px 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     box-sizing: border-box;
-
-    /* Centering using margin: auto */
-    margin: 50px auto; /* Adjust top margin as needed */
-}
-
-/* Form Header */
-h2 {
     text-align: center;
-    margin-bottom: 20px;
+}
+
+h2 {
     color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
 
-/* Form Elements */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-label {
+.form-group label {
     display: block;
-    font-weight: bold;
     margin-bottom: 5px;
     color: #555;
+    font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
+.form-control {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
+    transition: border-color 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus {
+.form-control:focus {
     border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Submit Button */
-input[type="submit"] {
+.btn-primary {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-input[type="submit"]:hover {
+.btn-primary:hover {
     background-color: #0056b3;
 }
 
-/* Error and Message Styles */
-.error-message, .success-message {
-    text-align: center;
+.text-center {
     margin-top: 15px;
 }
 
-.error-message {
+.text-center a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+.text-danger {
     color: #dc3545;
+    margin-top: 15px;
 }
 
-.success-message {
+.text-success {
     color: #28a745;
+    margin-top: 15px;
 }
-
-/* Specific styling for the body of login/register pages */
-body.login-body {
-    display: table; /* Acts as a container for centering */
-    width: 100%;
-    height: 100vh; /* Make it fill the viewport height */
-}
-
-body.login-body .form-container {
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0 auto; /* Center the form horizontally */
-}
-....... 
+..... 
+.... 
+. 
 .. 
+
 .. 
 @{
     ViewBag.Title = "Log in";
@@ -113,36 +107,42 @@ body.login-body .form-container {
 
 <head>
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
 </head>
 
-<body class="login-body">
+<body>
     <div class="form-container">
         <h2>Login</h2>
         @using (Html.BeginForm("Login", "User", FormMethod.Post))
         {
-            @* ... form groups here ... *@
             <div class="form-group">
                 <label for="Username">Username</label>
-                <input type="text" name="Username" id="Username" required />
+                <input type="text" name="Username" id="Username" class="form-control" required />
             </div>
             <div class="form-group">
                 <label for="Password">Password</label>
-                <input type="password" name="Password" id="Password" required />
+                <input type="password" name="Password" id="Password" class="form-control" required />
             </div>
-            <input type="submit" value="Login" />
+            <input type="submit" value="Login" class="btn-primary" />
         }
 
         @if (ViewBag.Error != null)
         {
-            <p class="error-message">@ViewBag.Error</p>
+            <p class="text-danger">@ViewBag.Error</p>
         }
+
+        <div class="text-center">
+            <p>Don't have an account? @Html.ActionLink("Register here", "Register", "User")</p>
+        </div>
     </div>
 </body>
-...... 
 ..... 
-@model Airline_Managementnew.Models.User
+
+.... 
+.... 
+
+.. @model Airline_Managementnew.Models.User
+
 @{
     ViewBag.Title = "Register";
     Layout = null;
@@ -150,16 +150,14 @@ body.login-body .form-container {
 
 <head>
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
 </head>
 
-<body class="login-body">
+<body>
     <div class="form-container">
         <h2>Register</h2>
         @using (Html.BeginForm("Register", "User", FormMethod.Post))
         {
-            @* ... form groups here ... *@
             <div class="form-group">
                 @Html.LabelFor(m => m.Username)
                 @Html.TextBoxFor(m => m.Username, new { @class = "form-control", required = "required" })
@@ -175,15 +173,19 @@ body.login-body .form-container {
                 @Html.TextBoxFor(m => m.Password, new { @class = "form-control", required = "required", type = "password" })
             </div>
             
-            <input type="submit" value="Register" />
+            <input type="submit" value="Register" class="btn-primary" />
         }
 
         @if (ViewBag.Message != null)
         {
-            <p class="success-message">@ViewBag.Message</p>
+            <p class="text-success">@ViewBag.Message</p>
         }
+
+        <div class="text-center">
+            <p>Already have an account? @Html.ActionLink("Login here", "Login", "User")</p>
+        </div>
     </div>
 </body>
 ..... 
-.......... 
-..... 
+
+
