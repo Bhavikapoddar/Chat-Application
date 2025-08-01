@@ -1,91 +1,98 @@
-nn
-. 
-
-@{
-    ViewBag.Title = "Log in";
-    Layout = null;
-}
-
-<head>
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/login-register.css" rel="stylesheet" />
-</head>
-
-<body class="login-body">
-    <div class="page-wrapper">
-        <div class="form-container">
-            <h2>Login</h2>
-            @using (Html.BeginForm("Login", "User", FormMethod.Post))
-            {
-                <div class="form-group">
-                    <label for="Username">Username</label>
-                    <input type="text" name="Username" id="Username" class="form-control" required />
-                </div>
-                <div class="form-group">
-                    <label for="Password">Password</label>
-                    <input type="password" name="Password" id="Password" class="form-control" required />
-                </div>
-                <input type="submit" value="Login" class="btn-primary" />
-            }
-
-            @if (ViewBag.Error != null)
-            {
-                <p class="text-danger">@ViewBag.Error</p>
-            }
-
-            <div class="text-center">
-                <p>Don't have an account? @Html.ActionLink("Register here", "Register", "User")</p>
-            </div>
-        </div>
-    </div>
-</body>
-..... 
+hiiiii
 ... 
-@model Airline_Managementnew.Models.User
-
-@{
-    ViewBag.Title = "Register";
-    Layout = null;
+.. 
+body.login-body {
+    background-color: #f0f2f5;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-<head>
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/login-register.css" rel="stylesheet" />
-</head>
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 350px;
+    box-sizing: border-box;
+    text-align: center;
+}
 
-<body class="login-body">
-    <div class="page-wrapper">
-        <div class="form-container">
-            <h2>Register</h2>
-            @using (Html.BeginForm("Register", "User", FormMethod.Post))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Username)
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", required = "required" })
-                </div>
+.form-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
-                </div>
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password)
-                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", required = "required", type = "password" })
-                </div>
-                
-                <input type="submit" value="Register" class="btn-primary" />
-            }
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
 
-            @if (ViewBag.Message != null)
-            {
-                <p class="text-success">@ViewBag.Message</p>
-            }
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
 
-            <div class="text-center">
-                <p>Already have an account? @Html.ActionLink("Login here", "Login", "User")</p>
-            </div>
-        </div>
-    </div>
-</body>
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
 
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.text-center a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+.text-danger {
+    color: #dc3545;
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.text-success {
+    color: #28a745;
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+}
